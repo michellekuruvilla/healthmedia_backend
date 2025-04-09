@@ -15,6 +15,7 @@ from __init__ import app, db, login_manager  # Key Flask objects
 # API endpoints
 from api.user import user_api 
 from api.pfp import pfp_api
+
 #from api.southAfrica import southafrica_api # type: ignore
 from api.nestImg import nestImg_api # Justin added this, custom format for his website
 from api.post import post_api
@@ -79,6 +80,8 @@ def is_safe_url(target):
     ref_url = urlparse(request.host_url)
     test_url = urlparse(urljoin(request.host_url, target))
     return test_url.scheme in ('http', 'https') and ref_url.netloc == test_url.netloc
+
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
