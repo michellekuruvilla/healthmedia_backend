@@ -1,0 +1,99 @@
+{% extends "layouts/base.html" %}
+{% set project = "Home" %}
+
+{% block body %}
+    <!-- Start of body content specific to page -->
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Restaurant Reviews</title>
+            <style>
+                body {
+                    background: linear-gradient(to bottom, rgb(226, 133, 207), rgb(117, 0, 62));
+                    background-attachment: fixed;
+                    margin: 0;
+                    padding: 0;
+                    font-family: 'Comic Sans MS', 'Brush Script MT', cursive;
+                }
+                .myDiv {
+                    border: 5px solid white;
+                    background: linear-gradient(to bottom right, rgb(248, 180, 210), rgb(146, 67, 114));
+                    text-align: center;
+                    padding: 30px;
+                    border-radius: 15px;
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                    animation: fadeIn 1.5s ease-in-out;
+                    max-width: 80%;
+                    margin: 40px auto;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .myDiv:hover {
+                    transform: scale(1.03);
+                    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+                }
+                .button {
+                    background-color: rgb(244, 236, 253);
+                    color: rgb(88, 49, 118);
+                    border: none;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    font-family: 'Comic Sans MS', 'Brush Script MT', cursive;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                    display: block;
+                    margin: 10px auto;
+                }
+                .button:hover {
+                    background-color: rgb(214, 200, 233);
+                    color: white;
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+                }
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                .intro-text {
+                    color: rgb(77, 19, 4);
+                    font-size: 25px;
+                    text-align: center;
+                    margin-top: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="myDiv">
+                <h2 style="color: white; font-size: 2.5em;">Welcome to Restaurant Reviews!</h2>
+                <p class="intro-text">Through our restaurant review page, you can explore Africa, Asia, South America, and even San Diego, looking at restaurants from each page and reviewing them. You can also get random recipe ideas from our page and leave your thoughts after trying them. Enjoy Exploring!</p>
+                <a href="https://prajnar123123213.github.io/restaurant_frontend/share_and_care/home">
+                    <button class="button">Asia</button>
+                </a>
+                <a href="https://prajnar123123213.github.io/restaurant_frontend/create_and_compete/home">
+                    <button class="button">Africa</button>
+                </a>
+                <a href="https://prajnar123123213.github.io/restaurant_frontend/rate_and_relate/home">
+                    <button class="button">South America</button>
+                </a>
+                <a href="https://prajnar123123213.github.io/restaurant_frontend/san_diego/home">
+                    <button class="button">San Diego</button>
+                </a>
+                <div class="image-gallery">
+                    <img src="http://www.culturenesia.com/wp-content/uploads/2020/09/geoff-greenwood-rH1aA4TqGms-unsplash-scaled.jpg" alt="Asian Restaurant" width="300" height="300">
+                    <img src="https://wallpaperaccess.com/full/1810781.jpg" alt="African Restaurant" width="300" height="300">
+                    <img src="https://www.royalcaribbean.com/blog/wp-content/uploads/2021/09/iStock-903369732v1.jpg" alt="South American Restaurant" width="300" height="300">
+                    <img src="https://uphomes.com/storage/Blogs/San-Diego-CA-Skyline.png" alt="San Diego Restaurant" width="300" height="300">
+                </div>
+            </div>
+        </body>
+        </html>
+{% endblock %}
+
