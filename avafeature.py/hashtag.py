@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 import csv
-import json
 from collections import defaultdict
 
 app = Flask(__name__)
@@ -23,30 +22,37 @@ def analyze_hashtags():
         "total_engagement_rate": 0.0
     })
 
-    with open(input_file, newline='', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            hashtags = row["Hashtags"].split(", ")
-            likes = int(row["Likes"])
-            comments = int(row["Comments"])
-            engagement = (likes + comments) / 100000  # Assume 100k followers (adjust if needed)
+    try:
+        with open(input_file, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                hashtags = row["Hashtags"].split(", ")
+                likes = int(row["Likes"])
+                comments = int(row["Comments"])
+                engagement = (likes + comments) / 100000  # Example: 100k followers
 
-            for tag in hashtags:
-                stats = hashtag_stats[tag]
-                stats["total_posts"] += 1
-                stats["total_likes"] += likes
-                stats["total_comments"] += comments
-                stats["total_engagement_rate"] += engagement
+                for tag in hashtags:
+                    stats = hashtag_stats[tag]
+                    stats["total_posts"] += 1
+                    stats["total_likes"] += likes
+                    stats["total_comments"] += comments
+                    stats["total_engagement_rate"] += engagement
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
     # Calculate averages
+    result = {}
     for tag, stats in hashtag_stats.items():
         total = stats["total_posts"]
-        stats["avg_likes"] = stats["total_likes"] / total
-        stats["avg_comments"] = stats["total_comments"] / total
-        stats["avg_engagement_rate"] = stats["total_engagement_rate"] / total
+        result[tag] = {
+            **stats,
+            "avg_likes": stats["total_likes"] / total,
+            "avg_comments": stats["total_comments"] / total,
+            "avg_engagement_rate": stats["total_engagement_rate"] / total
+        }
 
     # Return the result as JSON
-    return jsonify(hashtag_stats)
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(debug=True)
