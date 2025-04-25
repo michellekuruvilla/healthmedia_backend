@@ -5,8 +5,8 @@ from collections import defaultdict
 L = instaloader.Instaloader()
 
 # Log in with your Instagram credentials
-USERNAME = avaroseswims@gmail.com  # Replace with your IG username
-PASSWORD = avarose2008  # Replace with your IG password
+USERNAME = "avaroseswims@gmail.com"  # Replace with your IG username
+PASSWORD = "avarose2008"  # Replace with your IG password
 
 # Optional: load session if saved before
 # L.load_session_from_file(USERNAME)
